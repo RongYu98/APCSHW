@@ -1,0 +1,15 @@
+public class KnightsTour{
+
+    int[][] board;
+    
+    public KnightsTour(int n){
+	board = new int[n][n];
+    }
+
+
+    public static void main(String[] args){
+
+
+    }
+
+}
