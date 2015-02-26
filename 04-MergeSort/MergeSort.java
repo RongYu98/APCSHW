@@ -10,6 +10,21 @@ public class MergeSort {
 	two = b;
     }
 */
+    public ArrayList<Integer> MSort(ArrayList<Integer> a){
+	if (a.size()<=1){
+	    return a;}
+	else {
+	    ArrayList<Integer> b =new ArrayList<Integer>();
+	    for (int i=0;i<a.size()/2;i++){
+		b.add(a.get(i));}
+	    ArrayList<Integer> c = new ArrayList<Integer>();
+	    for (int i=a.size()/2;i<a.size();i++){
+		c.add(a.get(i));}
+	    ArrayList<Integer> r1 = MSort(b);
+	    ArrayList<Integer> r2 = MSort(c);
+	    return Merge(r1, r2);}
+    } 
+
     public ArrayList<Integer> Merge ( ArrayList<Integer> a, ArrayList<Integer> b ) {
 	ArrayList<Integer> merged= new ArrayList<Integer>();
 	while ( a.size() > 0 && b.size() > 0 ) {
@@ -41,12 +56,16 @@ public class MergeSort {
     public static void main( String[] args ) {
 	MergeSort M = new MergeSort();
 	ArrayList<Integer> b = new ArrayList<Integer>();
-	ArrayList<Integer> c = new ArrayList<Integer>();
-	for (int i=0; i<10; i++){
-	    b.add(i);
-	    c.add(i*2);}
-	ArrayList<Integer> a = M.Merge(b, c);
-	System.out.println(a);
+	//ArrayList<Integer> c = new ArrayList<Integer>();
+	Random R = new Random();
+	for (int i=0; i<11; i++){
+	    b.add(R.nextInt(20));
+	    //c.add(R.nextInt(10));
+	}
+	
+	System.out.println(M.MSort(b));
+	//ArrayList<Integer> a = M.Merge(b, c);
+	//System.out.println(a);
     }
 
 }
