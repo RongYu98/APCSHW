@@ -22,7 +22,7 @@ public class lists{
     public String toString(){
 	String s = "";
 	Node tmp;;
-	for (tmp=l ; tmp!=null ; tmp=tmp.getNext()){
+	for (tmp=l.getNext() ; tmp!=null ; tmp=tmp.getNext()){
 	    s = s + tmp + " --> ";
 	}
 	s = s + "null";
@@ -30,7 +30,7 @@ public class lists{
     }
 
     //PreCondition: has to be within bounds
-    public Node find(int n){
+    public Node get(int n){
 	if (n>length){
 	    return nothing;
 	}
@@ -41,14 +41,14 @@ public class lists{
 	return tmp;
     }
 
-    public void insert(int n, String S){
+    public void add(int n, String S){
 	Node temp;
 	if (n==0){
 	    add(S);
 	} else if (n>length){
-	    System.out.println("OutOfBounds");
+	    System.out.println("Sorry, Out Of Bounds");
 	} else {
-	    Node tmp = l.getNext;
+	    Node tmp = l.getNext();
 	    for (int i=0; i<n-1; i++){
 		tmp=tmp.getNext();
 	    }
@@ -60,5 +60,16 @@ public class lists{
 	}
     }
 
-    public void remove(int n){}
+    public void remove(int n){
+	if (n>length-1){
+	    System.out.println("Sorry, Out Of Bounds");
+	    return;}
+	Node tmp=l;
+	for (int i=0;i<n;i++){//same as find, only without the initial getNext
+	    tmp=tmp.getNext();}
+	tmp.setNext(tmp.getNext().getNext());
+	length--;
+    }
+	
+
 }
