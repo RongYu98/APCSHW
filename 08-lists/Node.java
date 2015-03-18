@@ -1,3 +1,5 @@
+import java.util.*;
+
 public class Node{
 		private int data;
 		private Node next;
@@ -19,6 +21,6 @@ public class Node{
 				return next;
 		}
 		public String toString(){
-				return data;
+				return String.valueOf(data);
 		}
 }

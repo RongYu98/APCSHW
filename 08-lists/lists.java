@@ -4,8 +4,12 @@ public class lists{
     private final Node nothing=null;
     
     public lists(){
-	l = new Node(0);
+	l = new Node(-99999);
 	length = 0;
+    }
+
+    public int getSize(){
+	return length;
     }
     
     public void add(int s){
@@ -76,10 +80,8 @@ public class lists{
     public boolean remove2(int n){
 	if (n<0 || n>length){
 	    return false;}
-	Node tmp;
 	for (Node temp = l; temp != null; temp=temp.getNext()){
 	    if (temp.getNext().getData()==n){
-		tmp=temp.getNext().getNext();
 		temp.setNext(temp.getNext().getNext());
 		return true;
 	    }
