@@ -1,10 +1,8 @@
 public class Driver{
     public static void main(String[] args) {
 	lists l = new lists();
-	l.add("hello");
-	l.add("world");
-	for (int i=0;i<5;i++){
-	    l.add(""+i);
+	for (int i=0;i<10;i++){
+	    l.add(i);
 	}
 	System.out.println(l);
 	System.out.println("zeroth is: " +l.get(0));
@@ -12,9 +10,9 @@ public class Driver{
 	System.out.println("fourth is: "+l.get(4));
 	System.out.println("three is: "+l.get(3));
 	System.out.println("seventh is: "+l.get(7));
-	l.add(0, "zeroth");
-	l.add(3, "third");
-	l.add(6, "sixth");
+	l.add(0, 990);
+	l.add(3, 333);
+	l.add(6, 666);
 	System.out.println(l);
 	l.remove(1);
 	System.out.println("removed first: "+l);
