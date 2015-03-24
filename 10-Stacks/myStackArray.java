@@ -1,13 +1,13 @@
 public class myStackArray<E>{
     
-    E[] stack = new E[1];
+    E[] stack = (E[])new Object[1];
 
     public myStackArray(E thing){
 	stack[0]=thing;
     }
 
     public void push(E data){
-	E[] temp = new E[stack.length+1];
+	E[] temp = (E[]) new Object[stack.length+1];
 	temp[0]=data;
 	for (int i=1; i<temp.length;i++){
 	    temp[i]=stack[i-1];
@@ -21,7 +21,7 @@ public class myStackArray<E>{
 	}
 	else {
 	    E data = stack[0];
-	    E[] temp = new E[stack.length-1];
+	    E[] temp = (E[]) new Object[stack.length-1];
 	    for (int i=0; i<temp.length; i++){
 		temp[i] = stack[i+1];
 	        
