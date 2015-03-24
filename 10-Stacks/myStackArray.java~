@@ -1,0 +1,31 @@
+public class myStackArray<E>{
+    
+    E[] stack = new E[0];
+
+    public myStackArray(){
+    }
+
+    public void push(E data){
+	E[] temp = new E[stack.length+1];
+	temp[0]=data;
+	for (int i=1; i<temp.length;i++){
+	    temp[i]=stack[i-1];
+	}
+	stack = temp;
+    }
+
+    public E pop(){
+	if (empty()){
+	    return null;
+	}
+	else {
+	    E data = stack[0];
+	    E[] temp = new E[stack.length-1];
+	    for (int i=0; i<temp.length; i++){
+		temp[i] = stack[i+1];
+	    }
+	}
+	return data;
+	    
+
+}
