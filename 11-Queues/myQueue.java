@@ -12,8 +12,13 @@ public class myQueue<E>{
     public void enqueue(E data){
         // add something to the tail/last
 	Node<E> Stuff = new Node(data);
-	back.setNext(Stuff);
-	back = Stuff;
+	if (empty()){
+	    back=Stuff;
+	    front=Stuff;
+	} else {
+	    back.setNext(Stuff);
+	    back = Stuff;
+	}
     }
 
     public E dequeue(){
@@ -23,6 +28,9 @@ public class myQueue<E>{
 	}
 	E retval = front.getData();
 	front = front.getNext();
+	if (front==null){
+	    back=back.getNext();// so both are null
+	}
 	return retval;
     }
 
