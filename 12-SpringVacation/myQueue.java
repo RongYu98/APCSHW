@@ -3,15 +3,15 @@ public class myQueue<E>{
     Node<E> front = new Node<E>();
     Node<E> back = new Node<E>();
 
-    public myQueue(E e){
-	Node<E> Something = new Node(e);
+    public myQueue(E e1, E e2){
+	Node<E> Something = new Node(e1, e2);
 	front = Something;
 	back = Something;
     }
 
-    public void enqueue(E data){
+    public void enqueue(E data1, E data2){
         // add something to the tail/last
-	Node<E> Stuff = new Node(data);
+	Node<E> Stuff = new Node(data1, data2);
 	if (empty()){
 	    back=Stuff;
 	    front=Stuff;
@@ -21,12 +21,12 @@ public class myQueue<E>{
 	}
     }
 
-    public E dequeue(){
+    public Node dequeue(){
         // remove and return the head/front item from the stack
 	if (empty()){
 	    return null;
 	}
-	E retval = front.getData();
+	Node retval = new Node(front.GetX(), front.GetY());
 	front = front.getNext();
 	if (front==null){
 	    back=back.getNext();// so both are null
