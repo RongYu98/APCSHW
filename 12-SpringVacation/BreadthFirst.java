@@ -2,21 +2,19 @@ import java.io.*;
 import java.util.*;
 
 public class BreadthFirst {
-    private char[][] board;
-    private int maxX;
-    private int maxY;
+    public char[][] board;
+    public int maxX;
+    public int maxY;
     
-    private char path='#';
-    private char wall=' ';
-    private char me='z';
-    private char exit='$';
-    private char visited = '.';
-    private boolean solved = false;
-    private myQueue Frontier;
+    public char path='#';
+    public char wall=' ';
+    public char me='z';
+    public char exit='$';
+    public char visited = '.';
+    public boolean solved = false;
+    public myQueue Frontier;
 
     public BreadthFirst(){
-	Node Beginning = new Node(1,1);
-	Frontier = new myQueue();
 	maxX=40;
 	maxY=20;
 	board = new char[maxX][maxY];
@@ -37,54 +35,62 @@ public class BreadthFirst {
     }
 	
     public String toString(){
-	String s = "[2J\n";			
+	String s = "[2J\n";	  //doesn't work on my console		
 	for (int y=0;y<maxY;y++){
 	    for (int x=0;x<maxX;x++)
 		s = s +board[x][y];
 	    s=s+"\n";
 	}
+	for (int i=0;i<5;i++){
+	    System.out.println();
+	}
 	return s;
     }
 
+    public void delay(int n){
+	try{
+	    Thread.sleep(n);
+	} catch (Exception e){}
+    }
+
     public void Solve(){
+	Frontier = new myQueue(1,1);
 	while (!Frontier.empty()){
 	    //dequeue something
-	    new Node temp = Fontier.dequeue();
+	    Node temp = Frontier.dequeue();
 	    int xcor = temp.GetX();
 	    int ycor = temp.GetY();
 	    
 	    //calculate // break if neccessary
-
-	    //enqueue all around it into frontier
-
-	}
-    }
-    /*
-    public void Solve(int x, int y){
-	if (board[x][y]==wall || board[x][y]==me || board[x][y]==visited ||
-	    solved)
-	    {
-		return;
+	    if (board[xcor][ycor]==exit){
+		break;
+	    } else {
+		board[xcor][ycor]=me;
 	    }
 
-	if (board[x][y]==exit){
+	    //enqueue all around it into frontier
+	    if (Checker(xcor, ycor+1)){
+		Frontier.enqueue(xcor, ycor+1);}
+	    if (Checker(xcor+1, ycor)){
+		Frontier.enqueue(xcor+1, ycor);}
+	    if (Checker(xcor, ycor-1)){
+		Frontier.enqueue(xcor, ycor-1);}
+	    if (Checker(xcor-1, ycor)){
+		Frontier.enqueue(xcor-1, ycor);}
 	    System.out.println(this);
-	    solved = true;
+	    delay(50);		
 	}
-	delay(100);
-	System.out.println(this);
-	board[x][y]=me;
-	
     }
-    public void Solve2(int x, int y){
-	Node NewGuy = new Node (x, y);
-	
+    public boolean Checker(int x, int y){
+	if (x>-1 && x<board.length && y >-1 && y < board[0].length){
+	    return board[x][y]==path || board[x][y] ==exit;}
+	return false;
     }
-    */  
 
     public static void main(String args[]){
 	BreadthFirst BF = new BreadthFirst();
 	System.out.println(BF);
+	BF.Solve();
     }
 
     /* Algorithm:

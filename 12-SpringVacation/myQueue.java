@@ -1,17 +1,17 @@
 public class myQueue<E>{
 
-    Node<E> front = new Node<E>();
-    Node<E> back = new Node<E>();
+    Node front;
+    Node back;
 
-    public myQueue(E e1, E e2){
-	Node<E> Something = new Node(e1, e2);
+    public myQueue(int e1, int e2){
+	Node Something = new Node(e1, e2);
 	front = Something;
 	back = Something;
     }
 
-    public void enqueue(E data1, E data2){
+    public void enqueue(int data1, int data2){
         // add something to the tail/last
-	Node<E> Stuff = new Node(data1, data2);
+	Node Stuff = new Node(data1, data2);
 	if (empty()){
 	    back=Stuff;
 	    front=Stuff;
@@ -38,8 +38,8 @@ public class myQueue<E>{
 	return front==null;
     }
 
-    public E head() {
+    public Node head() {
         // return the first item in the queue
-	return front.getData();
+	return front;
     }
 }

@@ -1,34 +1,26 @@
-public class Node<E>{
-    private E data;
-    private E X;
-    private E Y;
-    private Node<E> next;
+public class Node{
+
+    private int X;
+    private int Y;
+    private Node next;
 
     public Node(int x, int y){
 	X = x;
-	Y = nully;
+	Y = y;
     }
-    public Node(E s){
-	data = s;
-	next = null;
-    }
-    public E GetX(){
+
+    public int GetX(){
 	return X;}
-    public E GetY(){
+    public int GetY(){
 	return Y;}
-    public void setData(E s){
-	data = s;
-    }
-    public E getData(){
-	return data;
-    }
-    public void setNext(Node<E> n){
+
+    public void setNext(Node n){
 	next = n;
     }
-    public Node<E> getNext(){
+    public Node getNext(){
 	return next;
     }
     public String toString(){
-	return ""+data;
+	return ""+X+Y;
     }
 }
