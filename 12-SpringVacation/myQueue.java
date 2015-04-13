@@ -9,7 +9,17 @@ public class myQueue<E>{
 	back = Something;
     }
 
-    public void enqueue(int data1, int data2){
+    public void enqueue(Node n){
+	if (empty()){
+	    back=n;
+	    front=n;}
+	else {
+	    back.setNext(n);
+	    back=n;
+	}
+    }
+
+    public Node enqueue(int data1, int data2){
         // add something to the tail/last
 	Node Stuff = new Node(data1, data2);
 	if (empty()){
@@ -19,6 +29,7 @@ public class myQueue<E>{
 	    back.setNext(Stuff);
 	    back = Stuff;
 	}
+	return Stuff;
     }
 
     public Node dequeue(){

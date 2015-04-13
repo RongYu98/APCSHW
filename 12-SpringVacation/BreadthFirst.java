@@ -55,6 +55,7 @@ public class BreadthFirst {
 
     public void Solve(){
 	Frontier = new myQueue(1,1);
+	Node Answer=new Node(1,1);
 	while (!Frontier.empty()){
 	    //dequeue something
 	    Node temp = Frontier.dequeue();
@@ -63,6 +64,8 @@ public class BreadthFirst {
 	    
 	    //calculate // break if neccessary
 	    if (board[xcor][ycor]==exit){
+		Answer = new Node(xcor, ycor);
+		Answer.SetPre(temp);
 		break;
 	    } else {
 		board[xcor][ycor]=me;
@@ -70,15 +73,28 @@ public class BreadthFirst {
 
 	    //enqueue all around it into frontier
 	    if (Checker(xcor, ycor+1)){
-		Frontier.enqueue(xcor, ycor+1);}
+		Node N1= new Node(xcor, ycor+1);
+		N1.SetPre(temp);
+		Frontier.enqueue(N1);}
 	    if (Checker(xcor+1, ycor)){
-		Frontier.enqueue(xcor+1, ycor);}
+		Node N2 = new Node(xcor+1,ycor);
+		N2.SetPre(temp);
+		Frontier.enqueue(N2);}
 	    if (Checker(xcor, ycor-1)){
-		Frontier.enqueue(xcor, ycor-1);}
+		Node N3 = new Node(xcor, ycor-1);
+		N3.SetPre(temp);
+		Frontier.enqueue(N3);}
 	    if (Checker(xcor-1, ycor)){
-		Frontier.enqueue(xcor-1, ycor);}
+		Node N4 = new Node(xcor-1, ycor);
+		N4.SetPre(temp);
+		Frontier.enqueue(N4);}
 	    System.out.println(this);
-	    delay(50);		
+	    delay(5);		
+	}
+	while (Answer.GetPre()!=null){
+	    System.out.println(Answer.GetX()+Answer.GetY());
+	    board[Answer.GetX()][Answer.GetY()]='.';
+	    Answer=Answer.GetPre();
 	}
     }
     public boolean Checker(int x, int y){
