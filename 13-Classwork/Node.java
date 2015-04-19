@@ -1,8 +1,9 @@
 public class Node {
-    private int x,y,priority;
+    private int x,y;
+    private double priority;
     private Node prev;
 		
-    public Node(int x, int y, int priority){
+    public Node(int x, int y, double priority){
 	this.x = x;
 	this.y = y;
 	this.priority = priority;
@@ -24,7 +25,7 @@ public class Node {
 	return y;
     }
 
-    public int getPri(){
+    public double getPri(){
 	return priority;
     }
 }

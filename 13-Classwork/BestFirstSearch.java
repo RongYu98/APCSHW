@@ -3,19 +3,19 @@ import java.util.*;
 
 public class BestFirstSearch{
 
-    private char[][] board;
-    private int maxX;
-    private int maxY;
-    private int Ex,Ey;
+    public char[][] board;
+    public int maxX;
+    public int maxY;
+    public int Ex,Ey;
 
-    private char path='#';
-    private char wall=' ';
-    private char me='z';
-    private char exit='$';
-    private char visited = '.';
-    private boolean solved = false;
+    public char path='#';
+    public char wall=' ';
+    public char me='z';
+    public char exit='$';
+    public char visited = '.';
+    public boolean solved = false;
 
-    private Frontier f;
+    public Frontier f;
 		
     public void delay(int n){
 	try {
@@ -69,7 +69,8 @@ public class BestFirstSearch{
     public void addToFront(int tx,int ty, Node current){
 	Node tmp = null;
 	if (board[tx][ty]=='#' || board[tx][ty]=='$'){
-	    int far = Math.abs(tx-Ex)+Math.abs(ty-Ey);
+	    //double far = Math.abs(tx-Ex)+Math.abs(ty-Ey);
+	    double far = Math.sqrt((tx-Ex)*(tx-Ex)+(ty-Ey)*(ty-Ey)); //better
 	    tmp = new Node(tx,ty,far);
 	    tmp.setPrev(current);
 	    f.add(tmp);
@@ -80,7 +81,7 @@ public class BestFirstSearch{
     public void bfs(int x, int y){
 	f = new Frontier();
 
-	f.add(new Node(x,y,0));
+	f.add(new Node(x,y,0.00000));
 
 	int tx=0,ty=0;
 	Node current = null;
