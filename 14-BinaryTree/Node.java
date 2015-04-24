@@ -18,9 +18,15 @@ public class Node {
     public Node getLeft(){
 	return left;
     }
+
+    public void setRight(Node Right){
+	right = Right;
+    }
+
+    public void setLeft(Node Left){
+	left = left;
+    }
 }
-
-
 
 
 
