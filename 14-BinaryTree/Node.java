@@ -24,7 +24,7 @@ public class Node {
     }
 
     public void setLeft(Node Left){
-	left = left;
+	left = Left;
     }
 }
 
