@@ -1,3 +1,5 @@
+import java.util.*;
+
 public class Tree2{
 
     private Node root=null;
@@ -107,6 +109,19 @@ public class Tree2{
 	return s;
     }
 
+    //use an array, put it in, and them solve it in order.
+    public String toString(ArrayList<Node> list, String s){
+	if (list.size()==0){
+	    return s;}
+	Node temp = list.get(0);
+	list.remove(0);
+	s+=String.valueOf(temp.getData());
+        list.add(temp.getRight());
+	list.add(temp.getLeft());
+	return toString(list, s);
+    }
+
+    
     public String ToString(Node T){
 	String s ="";
 	if (T==null){
