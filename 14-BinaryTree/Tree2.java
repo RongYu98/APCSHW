@@ -103,10 +103,13 @@ public class Tree2{
 	if (root==null){
 	    return "";}
 	s+=String.valueOf(root.getData())+" ";
-	s+=ToString(root.getRight())+" ";
-	s+=ToString(root.getLeft())+" ";
-	
-	return s;
+	//s+=ToString(root.getRight())+" ";
+	//s+=ToString(root.getLeft())+" ";
+	ArrayList<Node> orderOf = new ArrayList<Node>();
+	orderOf.add(root.getLeft());
+	orderOf.add(root.getRight());	
+
+	return s+toString(orderOf, s);
     }
 
     //use an array, put it in, and them solve it in order.
@@ -115,9 +118,11 @@ public class Tree2{
 	    return s;}
 	Node temp = list.get(0);
 	list.remove(0);
-	s+=String.valueOf(temp.getData());
-        list.add(temp.getRight());
-	list.add(temp.getLeft());
+	if (temp!=null){
+	    s+=String.valueOf(temp.getData()) + " ";
+	    list.add(temp.getRight());
+	    list.add(temp.getLeft());
+	}
 	return toString(list, s);
     }
 
@@ -136,6 +141,8 @@ public class Tree2{
 
     public static void main(String[] args){
 	Tree2 t=new Tree2();
+	for (int i=0; i<10; i++){
+	    t.Insert(i);}
 	t.Insert(10);
 	t.Insert(20);
 	t.Insert(30);
