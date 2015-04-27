@@ -89,7 +89,7 @@ public class Tree2{
 	    /*
 	      1. Set T to root
 	      2. search for n, but use a piggyback pointer T2 to follow T.
-	      3. T2 now points to new Node¡¯s parent
+	      3. T2 now points to new Nodes parent
 	      4. Insert the new node to the left or right of T2 as appropriate
 	    */
 	}    
