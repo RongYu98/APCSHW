@@ -1,6 +1,6 @@
 import java.util.*;
 
-public class Tree2{
+public class Tree{
 
     private Node root=null;
 
@@ -97,13 +97,6 @@ public class Tree2{
 	}    
     }
 
-    /* Algorithm: Removal Algorithm Left:
-       b) T has 1 child, point T2’s left or right to t’s non null child
-       3. T has 2 children:
-       a) find largest on left subtree or smallest on the right:
-       L=T.getLeft(); while(L.getRight()!=null){L=L.getRight();}
-       b) copy the data from L onto K
-       c) Remove (T,getLeft(), L.getData()) */
     public void remove(int data){
 	Node T2 = Search2(data); // before the Node with data
 	Node T = Search(data); //at the Node with data
@@ -114,13 +107,44 @@ public class Tree2{
 	    else {
 		T2.setRight(null);}
 	} else if (T.getRight()==null || T.getLeft()==null){
-	    if (T.getLeft==null){
-		Node Child = T.getRight();}
+	    Node Child;
+	    if (T.getLeft()==null){
+		Child = T.getRight();}
 	    else {
-		Node Child = T.getLeft();}
-	    if (T2.getData()>Child.getData()){
-	    }
-		//find if which is the child, add}
+		Child = T.getLeft();}
+	    if (T2.getRight().getData() == T.getData()){
+		T2.setRight(Child);}
+	    else {
+		T2.setLeft(Child);}
+	} else{
+	    Node L=T.getLeft();
+	    while(L.getLeft()!=null){
+		L=L.getRight();}
+	    T2=L;
+	    Remove(T.getLeft(), L.getData());
+	}
+    }
+    public void Remove(Node t, int data){
+	Node T2 = RecSearch2(data, root); // before the Node with data
+	Node T = Search(data); //at the Node with data
+
+	if (T.getRight()==null && T.getLeft()==null){
+	    if (T2.getData()>T.getData()){
+		T2.setLeft(null);}
+	    else {
+		T2.setRight(null);}
+	} else if (T.getRight()==null || T.getLeft()==null){
+	    Node Child;
+	    if (T.getLeft()==null){
+		Child = T.getRight();}
+	    else {
+		Child = T.getLeft();}
+	    if (T2.getRight().getData() == T.getData()){
+		T2.setRight(Child);}
+	    else {
+		T2.setLeft(Child);}
+	}
+    }
 	
 
     public String toString(){
@@ -167,7 +191,7 @@ public class Tree2{
     }	
 
     public static void main(String[] args){
-	Tree2 t=new Tree2();
+	Tree t=new Tree();
 	for (int i=0; i<10; i++){
 	    t.Insert(i);}
 	t.Insert(10);
@@ -181,6 +205,13 @@ public class Tree2{
 	t.Insert(52);
 	t.Insert(82);
 	t.Insert(16);
+	System.out.println(t);
+	t.remove(52);
+	t.remove(23);
+	t.remove(40);
+	System.out.println(t);
+	for (int i=2; i<10; i++){
+	    t.remove(i);}
 	//System.out.println(t.Search2(10).getData());
 	//System.out.println(t.Search2(20).getData());
 	//System.out.println(t.Search2(30).getData());
