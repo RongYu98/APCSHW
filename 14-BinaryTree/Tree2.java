@@ -97,23 +97,50 @@ public class Tree2{
 	}    
     }
 
+    /* Algorithm: Removal Algorithm Left:
+       b) T has 1 child, point T2’s left or right to t’s non null child
+       3. T has 2 children:
+       a) find largest on left subtree or smallest on the right:
+       L=T.getLeft(); while(L.getRight()!=null){L=L.getRight();}
+       b) copy the data from L onto K
+       c) Remove (T,getLeft(), L.getData()) */
+    public void remove(int data){
+	Node T2 = Search2(data); // before the Node with data
+	Node T = Search(data); //at the Node with data
+
+	if (T.getRight()==null && T.getLeft()==null){
+	    if (T2.getData()>T.getData()){
+		T2.setLeft(null);}
+	    else {
+		T2.setRight(null);}
+	} else if (T.getRight()==null || T.getLeft()==null){
+	    if (T.getLeft==null){
+		Node Child = T.getRight();}
+	    else {
+		Node Child = T.getLeft();}
+	    if (T2.getData()>Child.getData()){
+	    }
+		//find if which is the child, add}
+	
+
     public String toString(){
 	String s="";
 
 	if (root==null){
 	    return "";}
 	s+=String.valueOf(root.getData())+" ";
-	//s+=ToString(root.getRight())+" ";
-	//s+=ToString(root.getLeft())+" ";
-	ArrayList<Node> orderOf = new ArrayList<Node>();
-	orderOf.add(root.getLeft());
-	orderOf.add(root.getRight());	
+	s+=ToString(root.getRight())+" ";
+	s+=ToString(root.getLeft())+" ";
+	//ArrayList<Node> orderOf = new ArrayList<Node>();
+	//orderOf.add(root.getLeft());
+	//orderOf.add(root.getRight());	
 
-	return s+toString(orderOf, s);
+	return s;//+toString(orderOf, s);
     }
 
     //use an array, put it in, and them solve it in order.
     public String toString(ArrayList<Node> list, String s){
+	//returns the nodes from root to child, each level at a time
 	if (list.size()==0){
 	    return s;}
 	Node temp = list.get(0);
@@ -127,17 +154,17 @@ public class Tree2{
     }
 
     
-    public String ToString(Node T){
+    public String ToString(Node T){//returns the data in order
 	String s ="";
 	if (T==null){
 	    return s;}
 	else {
+	    s+=ToString(T.getLeft())+" ";
 	    s+=String.valueOf(T.getData())+" ";
 	    s+=ToString(T.getRight())+" ";
-	    s+=ToString(T.getLeft())+" ";
 	} 
 	return s;
-    }
+    }	
 
     public static void main(String[] args){
 	Tree2 t=new Tree2();
