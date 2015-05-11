@@ -1,0 +1,22 @@
+public Trees{
+
+    public int numNodes(Node T){
+	if (T==null){
+	    return 0;}
+	else {
+	    return 1+numNodes(T.getRight())+numNodes(T.getLeft());
+	}
+    }
+
+
+    public Node maxValue(Node T, Node big){
+	if (T==null){
+	    return big;}
+	else if (T.getData()>big.getData()){
+	    return maxValue(maxValue(T.getLeft(), T),
+			    maxValue(T.getRight(), T));}
+    }
+
+
+	
+}
