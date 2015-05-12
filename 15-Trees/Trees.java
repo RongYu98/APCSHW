@@ -55,11 +55,16 @@ public class Trees extends Tree{
 	splitDupes(t.getRight());
     }
 
-    public int longest(Node t){
-	//no idea, I didn't understand the algorithms at stackoverflow
+    public int diameter(Node t){
 	if (t==null){
 	    return 0;}
-	return 0;
+	else{
+	    int PL1 = height(t.getLeft()) + height(t.getRight()) + 2;
+	    int PL2 = diameter(t.getRight());
+	    int PL3 = diameter(t.getLeft());
+	    int PL12 = Math.max(PL1,PL2);
+	    return Math.max(PL12,PL3);
+	}
     }
 
     public static void main(String args[]){
