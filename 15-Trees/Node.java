@@ -1,5 +1,5 @@
 public class Node {
-    private int data;
+    private int data=0;
     private Node left=null;
     private Node right=null;
 		
